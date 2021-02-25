@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="http://localhost:3000" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+
+    <style>
+        body{
+            background-color:#e4c3c8;
+        }
+        #bookList {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+        img {
+            width: 200px;
+            height: 300px;
+            border-radius: 20px;
+        }
+
+        .book {
+            display: inline-block;
+            margin: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .book a {
+            display: block;
+            width: 45%;
+            float: left;
+            background-color: black;
+            color: yellow;
+            padding: 3px;
+            text-decoration: none;
+        }
+
+        .book a:hover {
+            background-color: aquamarine;
+            color: black;
+        }
+        .AddLink {
+            font-size: 20px;
+            color: rgb(230, 20, 20);          
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 10px;
+            background-color: rgb(233, 233, 17);
+            border-radius: 1px solid rgb(13, 136, 218);
+        }
+        h2{
+            text-align: center;
+            color: #81129c;
+            margin-top: 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>List Books</h2>
+    <a class="AddLink" href="./add">Add new</a>
+    <div id="bookList">
+        <% danhsach.forEach(function(book) { %>
+            <div class="book">
+                <img src="./upload/<%- book.Image %>" alt="" />
+                <div class="bookName">
+                    <%- book.Name %>
+                </div>
+                <div class="bookAuthor">
+                    <%- book.Author %>
+                </div>
+                <div class="bookCost">
+                    <%- book.Cost %>
+                </div>
+                <div class="button">
+                    <a href="./edit/<%- book._id %>">Edit</a>
+                    <a onClick ="return confirm ('Are you sure you want to delete?')" href="./delete/<%- book._id %>">Delete</a>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+</body>
+
+</html>
